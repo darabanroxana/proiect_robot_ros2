@@ -28,6 +28,7 @@ class BallChaser(Node):
         contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
         twist = Twist()
 
+
         if contours:
             largest = max(contours, key=cv2.contourArea)
             M = cv2.moments(largest)
@@ -42,16 +43,17 @@ class BallChaser(Node):
                     twist.angular.z = 0.0
                 elif cx <= center_left:
                     twist.linear.x = 0.0
-                    twist.angular.z = 1.0
+                    twist.angular.z = 0.5
                 else:
                     twist.linear.x = 0.0
-                    twist.angular.z = -1.0
+                    twist.angular.z = -0.5
             else:
                 twist.linear.x = 0.0
                 twist.angular.z = 0.0
         else:
+            # Search mode: spin in place to find the ball
             twist.linear.x = 0.0
-            twist.angular.z = 0.0
+            twist.angular.z = 0.5
 
         self.cmd_pub.publish(twist)
 
