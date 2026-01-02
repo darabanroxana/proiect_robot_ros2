@@ -1,0 +1,27 @@
+running develop
+running egg_info
+creating turtlebot3_football.egg-info
+writing turtlebot3_football.egg-info/PKG-INFO
+writing dependency_links to turtlebot3_football.egg-info/dependency_links.txt
+writing entry points to turtlebot3_football.egg-info/entry_points.txt
+writing requirements to turtlebot3_football.egg-info/requires.txt
+writing top-level names to turtlebot3_football.egg-info/top_level.txt
+writing manifest file 'turtlebot3_football.egg-info/SOURCES.txt'
+reading manifest file 'turtlebot3_football.egg-info/SOURCES.txt'
+writing manifest file 'turtlebot3_football.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/roxana/Desktop/proiect_robot/install/turtlebot3_football/lib/python3.10/site-packages/turtlebot3-football.egg-link (link to .)
+Installing ball_chaser script to /home/roxana/Desktop/proiect_robot/install/turtlebot3_football/bin
+Installing vision_node script to /home/roxana/Desktop/proiect_robot/install/turtlebot3_football/bin
+
+Installed /home/roxana/Desktop/proiect_robot/build/turtlebot3_football
+running symlink_data
+creating /home/roxana/Desktop/proiect_robot/install/turtlebot3_football/share/ament_index
+creating /home/roxana/Desktop/proiect_robot/install/turtlebot3_football/share/ament_index/resource_index
+creating /home/roxana/Desktop/proiect_robot/install/turtlebot3_football/share/ament_index/resource_index/packages
+symbolically linking /home/roxana/Desktop/proiect_robot/build/turtlebot3_football/resource/turtlebot3_football -> /home/roxana/Desktop/proiect_robot/install/turtlebot3_football/share/ament_index/resource_index/packages
+symbolically linking /home/roxana/Desktop/proiect_robot/build/turtlebot3_football/package.xml -> /home/roxana/Desktop/proiect_robot/install/turtlebot3_football/share/turtlebot3_football
+creating /home/roxana/Desktop/proiect_robot/install/turtlebot3_football/share/turtlebot3_football/worlds
+symbolically linking /home/roxana/Desktop/proiect_robot/build/turtlebot3_football/worlds/football_field.world -> /home/roxana/Desktop/proiect_robot/install/turtlebot3_football/share/turtlebot3_football/worlds
+creating /home/roxana/Desktop/proiect_robot/install/turtlebot3_football/share/turtlebot3_football/launch
+symbolically linking /home/roxana/Desktop/proiect_robot/build/turtlebot3_football/launch/spawn_robot_launch.py -> /home/roxana/Desktop/proiect_robot/install/turtlebot3_football/share/turtlebot3_football/launch

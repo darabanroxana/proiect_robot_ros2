@@ -1,0 +1,4 @@
+[console_scripts]
+ball_chaser = turtlebot3_football.ball_chaser:main
+vision_node = turtlebot3_football.vision_node:main
+

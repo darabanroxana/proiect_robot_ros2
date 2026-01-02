@@ -1,0 +1,141 @@
+<?xml version='1.0'?>
+<sdf version='1.6'>
+  <world name='football_field'>
+
+    <!-- basic physics and a default sun -->
+    <plugin name="gazebo_ros_init" filename="libgazebo_ros_init.so"/>
+    <plugin name="gazebo_ros_factory" filename="libgazebo_ros_factory.so"/>
+
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <!-- Red ball (sphere) placed 1 meter in front of the origin -->
+    <model name='football_red_ball'>
+      <pose>1 0 0.11 0 0 0</pose> <!-- x y z roll pitch yaw; z slightly above ground (radius ~0.11) -->
+      <static>false</static>
+      <link name='ball_link'>
+        <inertial>
+          <mass>0.43</mass>
+          <inertia>
+            <ixx>0.0009</ixx>
+            <iyy>0.0009</iyy>
+            <izz>0.0009</izz>
+          </inertia>
+        </inertial>
+        <collision name='ball_collision'>
+          <geometry>
+            <sphere>
+              <radius>0.11</radius>
+            </sphere>
+          </geometry>
+        </collision>
+        <visual name='ball_visual'>
+          <geometry>
+            <sphere>
+              <radius>0.11</radius>
+            </sphere>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Simple goal posts: two vertical cylinders ~2 meters apart located at x = 5 m -->
+    <model name='goal_posts'>
+      <pose>5 0 0 0 0 0</pose>
+      <static>true</static>
+
+      <!-- left post -->
+      <link name='post_left'>
+        <pose>0 1 1 0 0 0</pose> <!-- relative to model pose: y=+1 meter -->
+        <collision name='left_collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.05</radius>
+              <length>2.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name='left_visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.05</radius>
+              <length>2.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+
+      <!-- right post -->
+      <link name='post_right'>
+        <pose>0 -1 1 0 0 0</pose> <!-- relative to model pose: y=-1 meter -->
+        <collision name='right_collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.05</radius>
+              <length>2.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name='right_visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.05</radius>
+              <length>2.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+
+      <!-- crossbar (optional) connecting posts at top -->
+      <link name='crossbar'>
+        <pose>0 0 2 0 0 0</pose>
+        <collision name='crossbar_collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.04</radius>
+              <length>2.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name='crossbar_visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.04</radius>
+              <length>2.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+
+    </model>
+
+    <!-- simple ambient and background settings -->
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.9 1 1</background>
+    </scene>
+
+  </world>
+</sdf>

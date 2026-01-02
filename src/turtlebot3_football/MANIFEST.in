@@ -1,0 +1,2 @@
+recursive-include worlds *
+recursive-include launch *

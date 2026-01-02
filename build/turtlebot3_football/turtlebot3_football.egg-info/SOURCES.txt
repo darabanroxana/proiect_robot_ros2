@@ -1,0 +1,14 @@
+package.xml
+setup.py
+launch/spawn_robot_launch.py
+resource/turtlebot3_football
+turtlebot3_football/__init__.py
+turtlebot3_football/ball_chaser.py
+turtlebot3_football.egg-info/PKG-INFO
+turtlebot3_football.egg-info/SOURCES.txt
+turtlebot3_football.egg-info/dependency_links.txt
+turtlebot3_football.egg-info/entry_points.txt
+turtlebot3_football.egg-info/requires.txt
+turtlebot3_football.egg-info/top_level.txt
+turtlebot3_football.egg-info/zip-safe
+worlds/football_field.world
