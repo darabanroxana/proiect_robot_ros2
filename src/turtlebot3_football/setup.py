@@ -35,6 +35,7 @@ setup(
         'console_scripts': [
             'vision_node = turtlebot3_football.vision_node:main',
             'ball_chaser = turtlebot3_football.ball_chaser:main',
+            'referee = turtlebot3_football.referee:main',
         ],
     },
 )

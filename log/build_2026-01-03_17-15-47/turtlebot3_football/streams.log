@@ -1,0 +1,19 @@
+[0.543s] Invoking command in '/home/roxana/Desktop/proiect_robot/build/turtlebot3_football': PYTHONPATH=/home/roxana/Desktop/proiect_robot/build/turtlebot3_football/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/roxana/Desktop/proiect_robot/install/turtlebot3_football/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/roxana/Desktop/proiect_robot/build/turtlebot3_football/build --no-deps symlink_data
+[0.759s] running develop
+[0.896s] running egg_info
+[0.896s] writing turtlebot3_football.egg-info/PKG-INFO
+[0.896s] writing dependency_links to turtlebot3_football.egg-info/dependency_links.txt
+[0.896s] writing entry points to turtlebot3_football.egg-info/entry_points.txt
+[0.896s] writing requirements to turtlebot3_football.egg-info/requires.txt
+[0.896s] writing top-level names to turtlebot3_football.egg-info/top_level.txt
+[0.898s] reading manifest file 'turtlebot3_football.egg-info/SOURCES.txt'
+[0.899s] writing manifest file 'turtlebot3_football.egg-info/SOURCES.txt'
+[0.900s] running build_ext
+[0.900s] Creating /home/roxana/Desktop/proiect_robot/install/turtlebot3_football/lib/python3.10/site-packages/turtlebot3-football.egg-link (link to .)
+[0.901s] Installing ball_chaser script to /home/roxana/Desktop/proiect_robot/install/turtlebot3_football/bin
+[0.901s] Installing referee script to /home/roxana/Desktop/proiect_robot/install/turtlebot3_football/bin
+[0.901s] Installing vision_node script to /home/roxana/Desktop/proiect_robot/install/turtlebot3_football/bin
+[0.901s] 
+[0.902s] Installed /home/roxana/Desktop/proiect_robot/build/turtlebot3_football
+[0.902s] running symlink_data
+[0.937s] Invoked command in '/home/roxana/Desktop/proiect_robot/build/turtlebot3_football' returned '0': PYTHONPATH=/home/roxana/Desktop/proiect_robot/build/turtlebot3_football/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/roxana/Desktop/proiect_robot/install/turtlebot3_football/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/roxana/Desktop/proiect_robot/build/turtlebot3_football/build --no-deps symlink_data
