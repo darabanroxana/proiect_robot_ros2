@@ -1,116 +1,169 @@
 <?xml version='1.0'?>
 <sdf version='1.6'>
 
-  <world name='football_field'>
+  <world name='football_stadium'>
     <plugin name="gazebo_ros_state" filename="libgazebo_ros_state.so">
-      <ros>
-        <namespace>/gazebo</namespace>
-      </ros>
+      <ros><namespace>/gazebo</namespace></ros>
       <update_rate>10.0</update_rate>
     </plugin>
-
     <plugin name="gazebo_ros_init" filename="libgazebo_ros_init.so"/>
     <plugin name="gazebo_ros_factory" filename="libgazebo_ros_factory.so"/>
-
-    <include>
-      <uri>model://ground_plane</uri>
-    </include>
 
     <include>
       <uri>model://sun</uri>
     </include>
 
-    <model name='football_red_ball'>
-      <pose>1 0 0.11 0 0 0</pose>
-      <static>false</static>
-      <link name='ball_link'>
-        <inertial>
-          <mass>0.43</mass>
-          <inertia>
-            <ixx>0.0009</ixx>
-            <iyy>0.0009</iyy>
-            <izz>0.0009</izz>
-          </inertia>
-        </inertial>
-        <collision name='ball_collision'>
-          <geometry>
-            <sphere>
-              <radius>0.11</radius>
-            </sphere>
-          </geometry>
+    <model name='ground_plane'>
+      <static>true</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry><plane><normal>0 0 1</normal><size>100 100</size></plane></geometry>
+          <surface><friction><ode><mu>100</mu><mu2>50</mu2></ode></friction></surface>
         </collision>
-        <visual name='ball_visual'>
-          <geometry>
-            <sphere>
-              <radius>0.11</radius>
-            </sphere>
-          </geometry>
+        <visual name='visual'>
+          <cast_shadows>false</cast_shadows>
+          <geometry><plane><normal>0 0 1</normal><size>100 100</size></plane></geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
-            <specular>0.1 0.1 0.1 1</specular>
+            <script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Grey</name></script>
           </material>
         </visual>
       </link>
     </model>
 
-    <model name='goal_posts'>
-      <pose>5 0 0 0 0 0</pose>
+   <model name='grass_field'>
       <static>true</static>
+      <pose>0 0 0.005 0 0 0</pose> <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>13 8 0.01</size> </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.8 0.2 1</ambient><diffuse>0.2 0.8 0.2 1</diffuse>
+            </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>13 8 0.01</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+    </model>
 
+    <model name='stadium_walls'>
+      <static>true</static>
+      <pose>0 0 0 0 0 0</pose>
+      <link name='walls'>
+        <visual name='wall_1'>
+          <pose>6.5 0 0.25 0 0 0</pose>
+          <geometry><box><size>0.2 8 0.5</size></box></geometry>
+          <material><script><name>Gazebo/Wood</name><uri>file://media/materials/scripts/gazebo.material</uri></script></material>
+        </visual>
+        <collision name='coll_1'><pose>6.5 0 0.25 0 0 0</pose><geometry><box><size>0.2 8 0.5</size></box></geometry></collision>
+
+        <visual name='wall_2'>
+          <pose>-6.5 0 0.25 0 0 0</pose>
+          <geometry><box><size>0.2 8 0.5</size></box></geometry>
+          <material><script><name>Gazebo/Wood</name><uri>file://media/materials/scripts/gazebo.material</uri></script></material>
+        </visual>
+        <collision name='coll_2'><pose>-6.5 0 0.25 0 0 0</pose><geometry><box><size>0.2 8 0.5</size></box></geometry></collision>
+
+        <visual name='wall_3'>
+          <pose>0 4 0.25 0 0 0</pose>
+          <geometry><box><size>13.2 0.2 0.5</size></box></geometry>
+          <material><script><name>Gazebo/Wood</name><uri>file://media/materials/scripts/gazebo.material</uri></script></material>
+        </visual>
+        <collision name='coll_3'><pose>0 4 0.25 0 0 0</pose><geometry><box><size>13.2 0.2 0.5</size></box></geometry></collision>
+
+        <visual name='wall_4'>
+          <pose>0 -4 0.25 0 0 0</pose>
+          <geometry><box><size>13.2 0.2 0.5</size></box></geometry>
+          <material><script><name>Gazebo/Wood</name><uri>file://media/materials/scripts/gazebo.material</uri></script></material>
+        </visual>
+        <collision name='coll_4'><pose>0 -4 0.25 0 0 0</pose><geometry><box><size>13.2 0.2 0.5</size></box></geometry></collision>
+      </link>
+    </model>
+
+    <model name='football_red_ball'>
+      <pose>0 0 0.15 0 0 0</pose> <static>false</static>
+      <link name='ball_link'>
+        <inertial>
+          <mass>0.43</mass>
+          <inertia><ixx>0.0009</ixx><iyy>0.0009</iyy><izz>0.0009</izz></inertia>
+        </inertial>
+        <collision name='ball_collision'>
+          <geometry><sphere><radius>0.11</radius></sphere></geometry>
+          <surface><bounce><restitution_coefficient>0.7</restitution_coefficient><threshold>0</threshold></bounce></surface>
+        </collision>
+        <visual name='ball_visual'>
+          <geometry><sphere><radius>0.11</radius></sphere></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient><diffuse>1 0 0 1</diffuse><specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name='goalie_block'>
+      <pose>4.9 0 0.2 0 0 0</pose>
+      <static>false</static>
+      <link name='link'>
+        <gravity>0</gravity>
+        <inertial>
+          <mass>100</mass><inertia><ixx>1</ixx><ixy>0</ixy><ixz>0</ixz><iyy>1</iyy><iyz>0</iyz><izz>1</izz></inertia>
+        </inertial>
+        <collision name='collision'><geometry><box><size>0.2 0.6 0.4</size></box></geometry></collision>
+        <visual name='visual'>
+          <geometry><box><size>0.2 0.6 0.4</size></box></geometry>
+          <material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Blue</name></script></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name='goal_posts'>
+      <pose>5 0 0.01 0 0 0</pose>
+      <static>true</static>
       <link name='post_left'>
         <pose>0 2.0 1 0 0 0</pose> 
-        <collision name='left_collision'>
-          <geometry>
-            <cylinder>
-              <radius>0.05</radius>
-              <length>2.0</length>
-            </cylinder>
-          </geometry>
-        </collision>
-        <visual name='left_visual'>
-          <geometry>
-            <cylinder>
-              <radius>0.05</radius>
-              <length>2.0</length>
-            </cylinder>
-          </geometry>
-          <material>
-            <ambient>1 1 1 1</ambient>
-            <diffuse>1 1 1 1</diffuse>
-          </material>
-        </visual>
+        <collision name='left_collision'><geometry><cylinder><radius>0.05</radius><length>2.0</length></cylinder></geometry></collision>
+        <visual name='left_visual'><geometry><cylinder><radius>0.05</radius><length>2.0</length></cylinder></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
       </link>
-
       <link name='post_right'>
         <pose>0 -2.0 1 0 0 0</pose> 
-        <collision name='right_collision'>
-          <geometry>
-            <cylinder>
-              <radius>0.05</radius>
-              <length>2.0</length>
-            </cylinder>
-          </geometry>
-        </collision>
-        <visual name='right_visual'>
-          <geometry>
-            <cylinder>
-              <radius>0.05</radius>
-              <length>2.0</length>
-            </cylinder>
-          </geometry>
-          <material>
-            <ambient>1 1 1 1</ambient>
-            <diffuse>1 1 1 1</diffuse>
-          </material>
-        </visual>
+        <collision name='right_collision'><geometry><cylinder><radius>0.05</radius><length>2.0</length></cylinder></geometry></collision>
+        <visual name='right_visual'><geometry><cylinder><radius>0.05</radius><length>2.0</length></cylinder></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
       </link>
+    </model>
 
-      </model>
+    <model name='goal_posts_training'>
+      <pose>-5 0 0.01 0 0 3.14159</pose>
+      <static>true</static>
+      <link name='post_left'>
+        <pose>0 2.0 1 0 0 0</pose> 
+        <collision name='left_collision'><geometry><cylinder><radius>0.05</radius><length>2.0</length></cylinder></geometry></collision>
+        <visual name='left_visual'><geometry><cylinder><radius>0.05</radius><length>2.0</length></cylinder></geometry><material><ambient>0.9 0.9 0.9 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
+      </link>
+      <link name='post_right'>
+        <pose>0 -2.0 1 0 0 0</pose> 
+        <collision name='right_collision'><geometry><cylinder><radius>0.05</radius><length>2.0</length></cylinder></geometry></collision>
+        <visual name='right_visual'><geometry><cylinder><radius>0.05</radius><length>2.0</length></cylinder></geometry><material><ambient>0.9 0.9 0.9 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
+      </link>
+    </model>
 
     <scene>
-      <ambient>0.4 0.4 0.4 1</ambient>
-      <background>0.7 0.9 1 1</background>
+      <ambient>0.6 0.6 0.6 1</ambient>
+      <background>0.7 0.8 1 1</background>
+      <shadows>true</shadows>
     </scene>
 
   </world>

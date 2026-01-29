@@ -16,9 +16,9 @@ class BallChaser(Node):
         self.bridge = CvBridge()
         
         # --- CONFIGURĂRI ---
-        self.max_speed = 0.5        
-        self.search_speed = 0.5     
-        self.turn_sensitivity = 0.01 
+        self.max_speed = 0.7        
+        self.search_speed = 0.5    
+        self.turn_sensitivity = 0.01
         
         # LIMITA DE FRÂNARE (3.2m = Foarte sigur, departe de portar)
         self.safety_limit_x = 3.2
